@@ -81,6 +81,23 @@ const { title, description } = Astro.props;
           );
         });
 
+        /* ---- Visit cards: staggered reveal on scroll ---- */
+        const visitCards = document.querySelectorAll('[data-reveal="visit-cards"]');
+        if (visitCards.length) {
+          gsap.fromTo(
+            visitCards,
+            { opacity: 0, y: 32 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              ease: 'power3.out',
+              stagger: 0.15,
+              scrollTrigger: { trigger: '.cards', start: 'top 82%', once: true },
+            }
+          );
+        }
+
         /* ---- Ticker: seamless marquee (content is duplicated in markup) ---- */
         const track = document.querySelector('[data-ticker-track]');
         if (track instanceof HTMLElement) {

@@ -8,8 +8,8 @@ const { visit } = site;
     <p class="eyebrow" data-reveal="scroll">{visit.eyebrow}</p>
     <h2 class="visit__title" data-reveal="scroll">{visit.headline}</h2>
 
-    <div class="cards" data-reveal="scroll">
-      <article class="card">
+    <div class="cards">
+      <article class="card" data-reveal="visit-cards">
         <h3 class="card__title">
           <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
@@ -30,7 +30,7 @@ const { visit } = site;
         <p class="card__note">{visit.hours.note}</p>
       </article>
 
-      <article class="card">
+      <article class="card" data-reveal="visit-cards">
         <h3 class="card__title">
           <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
