@@ -1,0 +1,157 @@
+---
+import { site } from '../data/site.js';
+const { story } = site;
+
+/** Parse "100%" / "12" / "0" into a number + suffix for the count-up. */
+function splitStat(value) {
+  const match = value.match(/^(\d+)(.*)$/);
+  return match ? { n: Number(match[1]), suffix: match[2] } : null;
+}
+---
+
+<section class="story" id="story">
+  <div class="container story__inner">
+    <figure class="story__media" data-reveal="scroll">
+      <!-- Swap the placeholder for a real photo: public/images/story.jpg -->
+      <div class="story__photo" role="img" aria-label="coffee bean"></div>
+      <figcaption class="story__badge">
+        <img src="/images/cup.png" alt="" class="story__badge-img" />
+      </figcaption>
+    </figure>
+
+    <div class="story__copy" data-reveal="scroll">
+      <p class="eyebrow">{story.eyebrow}</p>
+      <h2 class="story__title">
+        <span>{story.headline[0]}</span>
+        <span class="story__title-italic">{story.headline[1]}</span>
+      </h2>
+      {story.paragraphs.map((text) => <p class="story__para">{text}</p>)}
+
+      <hr class="story__rule" />
+
+      <dl class="stats">
+        {
+          story.stats.map((stat) => {
+            const parsed = splitStat(stat.value);
+            return (
+              <div class="stats__item">
+                <dt class="stats__label">{stat.label}</dt>
+                <dd
+                  class="stats__value"
+                  data-count={parsed?.n}
+                  data-count-suffix={parsed?.suffix}
+                >
+                  {stat.value}
+                </dd>
+              </div>
+            );
+          })
+        }
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  .story {
+    background: var(--paper);
+    padding-block: var(--section-pad);
+  }
+
+  .story__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: center;
+  }
+
+  .story__media {
+    position: relative;
+    margin: 0;
+  }
+
+  .story__photo {
+    aspect-ratio: 4 / 3.4;
+    border-radius: var(--radius-card);
+    background: url('/images/beanBag.png') center / cover;
+  }
+
+  .story__badge {
+    position: absolute;
+    right: -1.25rem;
+    bottom: -1.25rem;
+    border-radius: var(--radius-card);
+    width: 170px;
+    height: 170px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .story__badge-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story__title {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+  }
+
+  .story__title span {
+    display: block;
+  }
+
+  .story__title-italic {
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .story__para {
+    margin: 0 0 1.25rem;
+    color: rgba(20, 51, 45, 0.8);
+  }
+
+  .story__rule {
+    border: none;
+    border-top: 1px solid rgba(20, 51, 45, 0.15);
+    margin: 2.25rem 0;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 0;
+  }
+
+  .stats__item {
+    display: flex;
+    flex-direction: column-reverse; /* value above label, valid dt/dd order */
+  }
+
+  .stats__value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--teal);
+    margin: 0;
+  }
+
+  .stats__label {
+    color: rgba(20, 51, 45, 0.7);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 860px) {
+    .story__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .story__badge {
+      right: 1rem;
+    }
+  }
+</style>

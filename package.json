@@ -1,0 +1,19 @@
+{
+  "name": "sloth-and-messenger",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.5",
+    "@fontsource/playfair-display": "^5.2.5",
+    "@fontsource/poppins": "^5.2.5",
+    "@fortawesome/fontawesome-free": "^7.3.0",
+    "astro": "^5.7.0",
+    "gsap": "^3.12.7"
+  }
+}

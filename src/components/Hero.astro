@@ -1,0 +1,71 @@
+---
+import { site } from '../data/site.js';
+const { hero } = site;
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <p class="hero__eyebrow" data-reveal="hero-eyebrow">{hero.eyebrow}</p>
+      <h1 class="hero__title">
+        <span class="hero__line" data-reveal="hero-line">{hero.headline[0]}</span>
+        <span class="hero__line hero__line--italic" data-reveal="hero-line"
+          >{hero.headline[1]}</span
+        >
+      </h1>
+      <p class="hero__sub" data-reveal="hero-sub">{hero.sub}</p>
+      <div class="hero__actions" data-reveal="hero-actions">
+        <a href={hero.primary.href} class="btn btn--solid">{hero.primary.label}</a>
+        <a href={hero.secondary.href} class="btn btn--ghost">{hero.secondary.label}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    color: var(--white);
+    background: url('/images/coffee.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero__inner {
+    padding-block: clamp(5rem, 12vw, 9rem) clamp(4rem, 9vw, 7rem);
+  }
+
+  .hero__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    margin: 0 0 2rem;
+  }
+
+  .hero__title {
+    font-size: clamp(3rem, 7.5vw, 5.5rem);
+    font-weight: 700;
+  }
+
+  .hero__line {
+    display: block;
+  }
+
+  .hero__line--italic {
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .hero__sub {
+    max-width: 34ch;
+    font-size: 1.15rem;
+    margin: 1.75rem 0 2.25rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+</style>

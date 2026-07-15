@@ -1,0 +1,116 @@
+---
+import '@fontsource/playfair-display/500.css';
+import '@fontsource/playfair-display/700.css';
+import '@fontsource/playfair-display/500-italic.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '../styles/global.css';
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/images/logo.png" type="image/png" />
+    <script is:inline>
+      // Marks that JS is running so CSS can safely hide [data-reveal]
+      // elements for GSAP. No JS → class never added → nothing hidden.
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+
+      if (!reduceMotion) {
+        /* ---- Hero: one orchestrated load sequence ---- */
+        gsap
+          .timeline({ defaults: { ease: 'power3.out' } })
+          .to('[data-reveal="hero-eyebrow"]', { opacity: 1, y: 0, duration: 0.5 })
+          .to(
+            '[data-reveal="hero-line"]',
+            { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 },
+            '-=0.2'
+          )
+          .to('[data-reveal="hero-sub"]', { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
+          .to(
+            '[data-reveal="hero-actions"]',
+            { opacity: 1, y: 0, duration: 0.6 },
+            '-=0.4'
+          )
+          .to(
+            '[data-reveal="hero-special"]',
+            { opacity: 1, y: 0, duration: 0.7 },
+            '-=0.3'
+          );
+
+        gsap.set(
+          '[data-reveal="hero-eyebrow"], [data-reveal="hero-line"], [data-reveal="hero-sub"], [data-reveal="hero-actions"], [data-reveal="hero-special"]',
+          { y: 28 }
+        );
+
+        /* ---- Sections: quiet scroll-in, once ---- */
+        document.querySelectorAll('[data-reveal="scroll"]').forEach((el) => {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 32 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power3.out',
+              scrollTrigger: { trigger: el, start: 'top 82%', once: true },
+            }
+          );
+        });
+
+        /* ---- Ticker: seamless marquee (content is duplicated in markup) ---- */
+        const track = document.querySelector('[data-ticker-track]');
+        if (track instanceof HTMLElement) {
+          gsap.to(track, {
+            xPercent: -50,
+            duration: 30,
+            ease: 'none',
+            repeat: -1,
+          });
+        }
+
+        /* ---- Story stats: count up when they enter view ---- */
+        document.querySelectorAll('[data-count]').forEach((el) => {
+          const target = Number(el.getAttribute('data-count'));
+          const suffix = el.getAttribute('data-count-suffix') ?? '';
+          const obj = { n: 0 };
+          gsap.to(obj, {
+            n: target,
+            duration: 1.4,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+            onUpdate: () => {
+              el.textContent = Math.round(obj.n) + suffix;
+            },
+          });
+        });
+      } else {
+        // Reduced motion: show everything immediately.
+        gsap.set('[data-reveal]', { opacity: 1 });
+      }
+    </script>
+  </body>
+</html>

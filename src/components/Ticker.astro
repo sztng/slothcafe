@@ -1,0 +1,48 @@
+---
+import { site } from '../data/site.js';
+// Duplicate the phrase list so the GSAP loop (translate to -50%) is seamless.
+const phrases = [...site.ticker, ...site.ticker];
+---
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" data-ticker-track>
+    {
+      phrases.map((phrase) => (
+        <span class="ticker__item">
+          {phrase} <span class="ticker__star">✦</span>
+        </span>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .ticker {
+    background: var(--teal);
+    color: var(--white);
+    overflow: hidden;
+    padding-block: 1.1rem;
+  }
+
+  .ticker__track {
+    display: flex;
+    width: max-content;
+    white-space: nowrap;
+  }
+
+  .ticker__item {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding-inline: 1.5rem;
+  }
+
+  .ticker__star {
+    margin-left: 3rem;
+    opacity: 0.7;
+  }
+
+  /* If motion is reduced, the GSAP loop never starts — the static band
+     still reads fine because the first few phrases are visible. */
+</style>

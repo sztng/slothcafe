@@ -1,0 +1,5 @@
+---
+const { size = 44, src = '/images/logo.png', ratio = 302 / 582 } = Astro.props;
+---
+
+<img src={src} alt="" width={size} height={size * ratio} aria-hidden="true" />

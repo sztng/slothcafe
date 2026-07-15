@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Ticker from '../components/Ticker.astro';
+import Story from '../components/Story.astro';
+import Visit from '../components/Visit.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site.js';
+
+// The Shopify layer is ready whenever you build the shop/menu page.
+// Example (works today with mocks, later with the real store):
+// import { getProducts } from '../lib/shopify.js';
+// const products = await getProducts();
+---
+
+<Base
+  title={`${site.name} — ${site.tagline}`}
+  description="Slow-roasted specialty coffee. We take our time so you can take yours."
+>
+  <Header />
+  <main>
+    <Hero />
+    <Ticker />
+    <Story />
+    <Visit />
+  </main>
+  <Footer />
+</Base>
