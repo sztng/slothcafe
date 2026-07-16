@@ -67,7 +67,7 @@ export const site = {
   },
 
   footer: {
-    line: 'Portland, Oregon · Est. 2019',
+    line: 'Singapore · Est. 2024',
     copyright: `© ${new Date().getFullYear()} Sloth & Messenger. All rights reserved.`,
   },
 };
