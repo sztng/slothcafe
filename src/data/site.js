@@ -19,7 +19,7 @@ export const site = {
   cta: { label: 'Order ahead', href: '#order' },
 
   hero: {
-    eyebrow: 'EST. 2019 · PORTLAND, OR',
+    eyebrow: 'EST. 2024 · SINGAPORE, SG',
     headline: ['Good coffee.', 'At our own pace.'],
     sub: 'We take our time so you can take yours. No rush, ever.',
     primary: { label: 'See the menu', href: '#menu' },

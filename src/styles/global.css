@@ -9,9 +9,9 @@
   --white: #ffffff;
 
   /* type */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Poppins', system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-display: 'Futura', 'Century Gothic', 'Poppins', sans-serif;
+  --font-body: 'Futura', 'Century Gothic', 'Poppins', sans-serif;
+  --font-mono: 'Futura', 'Century Gothic', 'IBM Plex Mono', ui-monospace, monospace;
 
   /* rhythm */
   --radius-card: 20px;
@@ -37,7 +37,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   font-weight: 400;
-  color: var(--ink);
+  color: #000;
   background: var(--paper);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -49,7 +49,7 @@ img {
 }
 
 a {
-  color: var(--teal);
+  color: #000;
 }
 
 h1,
@@ -74,7 +74,7 @@ h3 {
   font-size: 0.8rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: #000;
   margin: 0 0 1rem;
 }
 
