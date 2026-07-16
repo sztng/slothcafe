@@ -28,13 +28,12 @@ const API_VERSION = '2025-04';
 const MOCK_PRODUCTS = [
   {
     id: 'gid://shopify/Product/1001',
-    handle: 'ethiopia-yirgacheffe-konga',
-    title: 'Ethiopia Yirgacheffe Konga',
-    description:
-      'Floral and tea-like with bergamot and dark fruit. Roasted in-house weekly.',
+    handle: 'kenya-kioru',
+    title: 'Kenya Kioru',
+    description: 'black grape, black tea, dark brown sugar',
     featuredImage: {
-      url: '/images/product-ethiopia.jpg',
-      altText: 'Bag of Ethiopia Yirgacheffe Konga beans',
+      url: '/images/beanBag.png',
+      altText: 'Bag of Kenya Kioru beans',
     },
     variants: {
       nodes: [
@@ -49,13 +48,12 @@ const MOCK_PRODUCTS = [
   },
   {
     id: 'gid://shopify/Product/1002',
-    handle: 'brazil-carmo-de-minas',
-    title: 'Brazil Carmo de Minas',
-    description:
-      'Round and chocolate-leaning with hazelnut sweetness. An easy daily cup.',
+    handle: 'brazil-sitio-yamava',
+    title: 'Brazil Sítio Yamava',
+    description: 'chocolate, hazelnut, dried figs',
     featuredImage: {
-      url: '/images/product-brazil.jpg',
-      altText: 'Bag of Brazil Carmo de Minas beans',
+      url: '/images/beanBag.png',
+      altText: 'Bag of Brazil Sítio Yamava beans',
     },
     variants: {
       nodes: [
@@ -64,6 +62,26 @@ const MOCK_PRODUCTS = [
           title: '250g / Whole bean',
           availableForSale: true,
           price: { amount: '22.00', currencyCode: 'USD' },
+        },
+      ],
+    },
+  },
+  {
+    id: 'gid://shopify/Product/1003',
+    handle: 'sloth-decaf',
+    title: 'Sloth Decaf',
+    description: 'toffee, brown sugar, something else',
+    featuredImage: {
+      url: '/images/beanBag.png',
+      altText: 'Bag of Sloth Decaf beans',
+    },
+    variants: {
+      nodes: [
+        {
+          id: 'gid://shopify/ProductVariant/2003',
+          title: '250g / Whole bean',
+          availableForSale: true,
+          price: { amount: '21.00', currencyCode: 'USD' },
         },
       ],
     },

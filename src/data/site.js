@@ -11,9 +11,10 @@ export const site = {
   city: 'Portland, OR',
 
   nav: [
-    { label: 'Menu', href: '#menu' },
-    { label: 'Our Story', href: '#story' },
-    { label: 'Visit', href: '#visit' },
+    { label: 'Home', href: '/' },
+    { label: 'Shop', href: '#menu' },
+    { label: 'Menu', href: '#' },
+    { label: 'Contact us', href: '#visit' },
   ],
   cta: { label: 'Order ahead', href: '#order' },
 
@@ -23,13 +24,6 @@ export const site = {
     sub: 'We take our time so you can take yours. No rush, ever.',
     primary: { label: 'See the menu', href: '#menu' },
     secondary: { label: 'Our story', href: '#story' },
-    special: {
-      eyebrow: "TODAY'S SPECIAL",
-      title: 'Honey Lavender Latte',
-      description:
-        'Local raw honey, dried lavender syrup, oat milk. Available while our sleepy baristas keep up.',
-      price: '$6.50',
-    },
   },
 
   ticker: [
@@ -55,28 +49,24 @@ export const site = {
     ],
   },
 
+  shop: {
+    headline: "What we're serving",
+    shopAllLabel: 'Shop all coffee',
+    shopAllHref: '#',
+  },
+
+  newsletter: {
+    headline: 'Subscribe to the sloth mail',
+    sub: 'Get first access to new bean drops, fresh roasts, brewing tips, and shop updates.',
+    placeholder: 'Enter email',
+    cta: 'Subscribe',
+  },
+
   visit: {
-    eyebrow: 'FIND US',
-    headline: 'Come hang',
-    hours: {
-      rows: [
-        { days: 'Monday – Friday', time: '7:00 am – 6:00 pm' },
-        { days: 'Saturday', time: '8:00 am – 7:00 pm' },
-        { days: 'Sunday', time: '8:00 am – 5:00 pm' },
-      ],
-      note: 'We open when the sloth is ready.',
-    },
-    location: {
-      lines: ['1842 SE Malden Street', 'Portland, OR 97202'],
-      note: 'Bike parking out front — we insist. Street parking also available. Accessible entrance on Malden.',
-      directionsUrl: 'https://maps.google.com/?q=1842+SE+Malden+Street+Portland+OR',
-    },
-    contact: {
-      phone: '(503) 842-1190',
-      email: 'hello@slothandmessenger.com',
-      instagram: 'https://instagram.com',
-      facebook: 'https://facebook.com',
-    },
+    location: '115 Amoy Street',
+    hours: 'Mon – Fri | 0830 – 1600',
+    email: 'hello@slothandmessengercoffee',
+    instagram: 'slothandmessengercoffee',
   },
 
   footer: {
