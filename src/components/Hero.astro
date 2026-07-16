@@ -14,10 +14,6 @@ const { hero } = site;
         >
       </h1>
       <p class="hero__sub" data-reveal="hero-sub">{hero.sub}</p>
-      <div class="hero__actions" data-reveal="hero-actions">
-        <a href={hero.primary.href} class="btn btn--solid">{hero.primary.label}</a>
-        <a href={hero.secondary.href} class="btn btn--ghost">{hero.secondary.label}</a>
-      </div>
     </div>
   </div>
 </section>
@@ -25,7 +21,7 @@ const { hero } = site;
 <style>
   .hero {
     position: relative;
-    color: var(--white);
+    color: #ffffff;
     background: url('/images/coffee.png');
     background-size: cover;
     background-position: center;
