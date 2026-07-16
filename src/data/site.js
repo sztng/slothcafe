@@ -7,8 +7,8 @@
 export const site = {
   name: 'Sloth & Messenger',
   tagline: 'Good coffee. At our own pace.',
-  established: '2019',
-  city: 'Portland, OR',
+  established: '2024',
+  city: 'Singapore',
 
   nav: [
     { label: 'Home', href: '/' },
@@ -20,23 +20,20 @@ export const site = {
 
   hero: {
     eyebrow: 'EST. 2019 · PORTLAND, OR',
-    headline: ['Good coffee.', 'At our own pace.'],
-    sub: 'We take our time so you can take yours. No rush, ever.',
+    headline: ['specialty coffee', 'roasted weekly'],
+    sub: 'made for everyday rituals',
     primary: { label: 'See the menu', href: '#menu' },
     secondary: { label: 'Our story', href: '#story' },
   },
 
   ticker: [
-    'NO-RUSH COFFEE',
-    'DELIVERED WITH CHILL',
-    'SLOTH & MESSENGER',
-    'SLOW BY DESIGN',
-    'WORTH THE WAIT',
+    'now open at Amoy Street',
+    'specialty coffee',
   ],
 
   story: {
     eyebrow: 'OUR STORY',
-    headline: ['Slow roasted.', 'Worth every minute.'],
+    headline: ['intentional, specialty coffee, roasted locally'],
     paragraphs: [
       "Sloth and Messenger Coffee prides itself in delivering high-quality specialty coffee without pretense. Our mission is to offer a great coffee experience affordably.",
       'Each origin of green beans is chosen by Sloth and Messenger founder, Josh for its unique flavour profile. The beans are roasted locally on a weekly basis, using precise techniques to unlock the full potential of each batch. This small-batch roasting process ensures that every roast is fresh and tailored to highlight the unique characteristics of the beans.',
