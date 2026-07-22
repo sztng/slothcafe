@@ -12,9 +12,9 @@ export const site = {
 
   nav: [
     { label: 'Home', href: '/' },
-    { label: 'Shop', href: '#menu' },
-    { label: 'Menu', href: '#' },
-    { label: 'Contact us', href: '#visit' },
+    { label: 'Shop', href: '/shop' },
+    { label: 'Menu', href: '/menu' },
+    { label: 'Contact us', href: '/contactus' },
   ],
   cta: { label: 'Order ahead', href: '#order' },
 
@@ -48,7 +48,7 @@ export const site = {
 
   shop: {
     headline: "What we're serving",
-    shopAllLabel: 'OUR BEANS, RIGHT TO YOUR DOORSTEP',
+    shopAllLabel: 'Shop all coffee',
     shopAllHref: '/shop',
   },
 

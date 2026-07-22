@@ -1,5 +1,7 @@
 ---
 import { site } from '../data/site.js';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <header class="header">
@@ -9,7 +11,11 @@ import { site } from '../data/site.js';
     </a>
 
     <nav class="nav" aria-label="Main">
-      {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      {site.nav.map((item) => (
+        <a href={item.href} class={item.href === currentPath ? 'active' : ''}>
+          {item.label}
+        </a>
+      ))}
       <i class="fa-solid fa-cart-shopping nav__cart" aria-hidden="true"></i>
     </nav>
   </div>
@@ -61,6 +67,10 @@ import { site } from '../data/site.js';
 
   .nav a:hover {
     color: var(--teal);
+  }
+
+  .nav a.active {
+    color: var(--ink);
   }
 
   .nav__cart {

@@ -1,0 +1,163 @@
+---
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/700.css';
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { site } from '../data/site.js';
+const { visit } = site;
+---
+
+<Base
+  title={`Contact us — ${site.name}`}
+  description="Get in touch with Sloth & Messenger Coffee."
+>
+  <Header />
+  <main>
+    <section class="contact">
+      <div class="container">
+        <h1 class="contact__title">CONTACT US</h1>
+
+        <form class="contact__form" onsubmit="event.preventDefault()">
+          <div class="contact__row">
+            <input type="text" required placeholder="Name" aria-label="Name" class="contact__input" />
+            <input type="email" required placeholder="Email" aria-label="Email" class="contact__input" />
+            <input type="tel" placeholder="Phone number" aria-label="Phone number" class="contact__input" />
+          </div>
+
+          <textarea
+            required
+            placeholder="Your message here"
+            aria-label="Your message"
+            class="contact__textarea"
+            rows="6"
+          ></textarea>
+
+          <button type="submit" class="contact__submit">Send</button>
+        </form>
+
+        <div class="contact__info">
+          <div>
+            <h2 class="contact__info-title">locate us</h2>
+            <p class="contact__info-line">{visit.location}</p>
+            <p class="contact__info-line">{visit.hours}</p>
+          </div>
+
+          <div>
+            <h2 class="contact__info-title">contact</h2>
+            <p class="contact__info-line">{visit.email}</p>
+            <p class="contact__info-line">instagram | {visit.instagram}</p>
+          </div>
+        </div>
+      </div>
+
+      <Newsletter />
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .contact {
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    padding-block: 3rem var(--section-pad);
+  }
+
+  .contact__title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0 0 2rem;
+  }
+
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .contact__row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .contact__input,
+  .contact__textarea {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 1em 1.25rem;
+    border: 1px solid rgba(20, 51, 45, 0.15);
+    border-radius: 8px;
+    background: var(--white);
+    color: #000;
+    width: 100%;
+  }
+
+  .contact__input::placeholder,
+  .contact__textarea::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .contact__textarea {
+    resize: vertical;
+    font-family: var(--font-mono);
+  }
+
+  .contact__submit {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.9em 2.25rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--mint);
+    color: #000;
+    cursor: pointer;
+    transition: background-color 160ms ease;
+  }
+
+  .contact__submit:hover {
+    background: var(--teal);
+    color: var(--white);
+  }
+
+  .contact__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 640px;
+  }
+
+  .contact__info-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .contact__info-line {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+  }
+
+  @media (max-width: 700px) {
+    .contact__row {
+      grid-template-columns: 1fr;
+    }
+
+    .contact__info {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

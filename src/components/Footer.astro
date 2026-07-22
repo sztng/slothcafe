@@ -1,23 +1,17 @@
 ---
 import { site } from '../data/site.js';
-import Logo from './Logo.astro';
 ---
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div class="footer__brand">
-      <Logo size={52} />
-      <div>
-        <p class="footer__name">{site.name}</p>
-        <p class="footer__line">{site.footer.line}</p>
-      </div>
-    </div>
-
-    <nav class="footer__nav" aria-label="Footer">
-      {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
-    </nav>
-
     <p class="footer__copyright">{site.footer.copyright}</p>
+
+    <img src="/images/logoBigText.png" alt={site.name} class="footer__logo" />
+
+    <div class="footer__contact">
+      <p>{site.visit.email}</p>
+      <p>instagram | {site.visit.instagram}</p>
+    </div>
   </div>
 </footer>
 
@@ -25,7 +19,7 @@ import Logo from './Logo.astro';
   .footer {
     background: var(--ink);
     color: #000;
-    padding-block: 3rem;
+    padding-block: 2rem;
   }
 
   .footer__inner {
@@ -36,42 +30,23 @@ import Logo from './Logo.astro';
     flex-wrap: wrap;
   }
 
-  .footer__brand {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .footer__name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.3rem;
-    margin: 0;
-  }
-
-  .footer__line {
-    margin: 0.25rem 0 0;
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 0.9rem;
-  }
-
-  .footer__nav {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .footer__nav a {
-    color: #000;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .footer__nav a:hover {
-    color: #257568;
+  .footer__logo {
+    height: 80px;
+    width: auto;
   }
 
   .footer__copyright {
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .footer__contact {
+    text-align: right;
+  }
+
+  .footer__contact p {
+    color: rgba(0, 0, 0, 0.6);
     font-size: 0.9rem;
     margin: 0;
   }
