@@ -48,8 +48,8 @@ export const site = {
 
   shop: {
     headline: "What we're serving",
-    shopAllLabel: 'Shop all coffee',
-    shopAllHref: '#',
+    shopAllLabel: 'OUR BEANS, RIGHT TO YOUR DOORSTEP',
+    shopAllHref: '/shop',
   },
 
   newsletter: {

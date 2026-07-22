@@ -10,6 +10,7 @@ import { site } from '../data/site.js';
 
     <nav class="nav" aria-label="Main">
       {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      <i class="fa-solid fa-cart-shopping nav__cart" aria-hidden="true"></i>
     </nav>
   </div>
 </header>
@@ -60,6 +61,11 @@ import { site } from '../data/site.js';
 
   .nav a:hover {
     color: var(--teal);
+  }
+
+  .nav__cart {
+    font-size: 1.1rem;
+    color: #000;
   }
 
   @media (max-width: 640px) {
