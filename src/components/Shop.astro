@@ -1,9 +1,10 @@
 ---
 import { site } from '../data/site.js';
 import { getProducts } from '../lib/shopify.js';
+import Newsletter from './Newsletter.astro';
 
 const products = await getProducts(3);
-const { shop, newsletter } = site;
+const { shop } = site;
 ---
 
 <section class="shop" id="menu">
@@ -29,25 +30,7 @@ const { shop, newsletter } = site;
     <a href={shop.shopAllHref} class="shop__link" data-reveal="scroll">{shop.shopAllLabel}</a>
   </div>
 
-  <div class="newsletter">
-    <div class="container newsletter__inner" data-reveal="scroll">
-      <div>
-        <h3 class="newsletter__title">{newsletter.headline}</h3>
-        <p class="newsletter__sub">{newsletter.sub}</p>
-      </div>
-
-      <form class="newsletter__form" onsubmit="event.preventDefault()">
-        <input
-          type="email"
-          required
-          placeholder={newsletter.placeholder}
-          aria-label={newsletter.placeholder}
-          class="newsletter__input"
-        />
-        <button type="submit" class="newsletter__btn">{newsletter.cta}</button>
-      </form>
-    </div>
-  </div>
+  <Newsletter />
 </section>
 
 <style>
@@ -80,8 +63,7 @@ const { shop, newsletter } = site;
   .product__img {
     width: 100%;
     aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border-radius: var(--radius-card);
+    object-fit: contain;
     margin-bottom: 1.25rem;
   }
 
@@ -97,7 +79,7 @@ const { shop, newsletter } = site;
   .product__notes {
     font-family: var(--font-mono);
     font-size: 0.85rem;
-    color: rgba(20, 51, 45, 0.65);
+    color: rgba(0, 0, 0, 0.65);
     margin: 0;
   }
 
@@ -109,7 +91,7 @@ const { shop, newsletter } = site;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-size: 0.85rem;
-    color: var(--teal);
+    color: #000;
     text-decoration: underline;
     text-underline-offset: 4px;
   }
@@ -118,84 +100,9 @@ const { shop, newsletter } = site;
     color: var(--teal-deep);
   }
 
-  .newsletter {
-    margin-top: var(--section-pad);
-  }
-
-  .newsletter__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .newsletter__title {
-    font-family: var(--font-body);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    font-size: 1.3rem;
-    margin: 0 0 0.75rem;
-  }
-
-  .newsletter__sub {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: rgba(20, 51, 45, 0.7);
-    max-width: 34ch;
-    margin: 0;
-  }
-
-  .newsletter__form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    width: min(320px, 100%);
-  }
-
-  .newsletter__input {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    padding: 0.9em 1.1em;
-    border: 1px solid rgba(20, 51, 45, 0.15);
-    border-radius: 8px;
-    background: var(--white);
-    color: var(--ink);
-  }
-
-  .newsletter__input::placeholder {
-    color: rgba(20, 51, 45, 0.4);
-  }
-
-  .newsletter__btn {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 700;
-    font-size: 0.85rem;
-    padding: 0.9em 1.1em;
-    border: none;
-    border-radius: 8px;
-    background: var(--mint);
-    color: var(--ink);
-    cursor: pointer;
-    transition: background-color 160ms ease;
-  }
-
-  .newsletter__btn:hover {
-    background: var(--teal);
-    color: var(--white);
-  }
-
   @media (max-width: 700px) {
     .products {
       grid-template-columns: 1fr;
-    }
-
-    .newsletter__inner {
-      align-items: flex-start;
     }
   }
 </style>

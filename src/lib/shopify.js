@@ -32,7 +32,7 @@ const MOCK_PRODUCTS = [
     title: 'Kenya Kioru',
     description: 'black grape, black tea, dark brown sugar',
     featuredImage: {
-      url: '/images/beanBag.png',
+      url: '/images/beansSloth.png',
       altText: 'Bag of Kenya Kioru beans',
     },
     variants: {
@@ -52,7 +52,7 @@ const MOCK_PRODUCTS = [
     title: 'Brazil Sítio Yamava',
     description: 'chocolate, hazelnut, dried figs',
     featuredImage: {
-      url: '/images/beanBag.png',
+      url: '/images/beansSloth.png',
       altText: 'Bag of Brazil Sítio Yamava beans',
     },
     variants: {
@@ -72,7 +72,7 @@ const MOCK_PRODUCTS = [
     title: 'Sloth Decaf',
     description: 'toffee, brown sugar, something else',
     featuredImage: {
-      url: '/images/beanBag.png',
+      url: '/images/beansSloth.png',
       altText: 'Bag of Sloth Decaf beans',
     },
     variants: {

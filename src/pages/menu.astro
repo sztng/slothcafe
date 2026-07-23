@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site.js';
+---
+
+<Base
+  title={`Menu — ${site.name}`}
+  description="Our full coffee, tea, and drinks menu."
+>
+  <Header />
+  <main>
+    <section class="menu">
+      <div class="container">
+        <h1 class="menu__title">menu</h1>
+
+        <img src="/images/cardMenu.png" alt="Sloth & Messenger menu" class="menu__img" />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .menu {
+    padding-block: 3rem var(--section-pad);
+  }
+
+  .menu__title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0 0 2rem;
+  }
+
+  .menu__img {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    margin: 0 auto;
+  }
+</style>
