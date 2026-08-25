@@ -20,8 +20,8 @@ export const site = {
 
   hero: {
     eyebrow: 'EST. 2024 · SINGAPORE, SG',
-    headline: ['specialty coffee', 'roasted weekly'],
-    sub: 'made for everyday rituals',
+    headline: ['specialty coffee, locally', 'roasted beans, made for'],
+    sub: 'everyday rituals',
     primary: { label: 'See the menu', href: '#menu' },
     secondary: { label: 'Our story', href: '#story' },
   },
@@ -37,6 +37,7 @@ export const site = {
     paragraphs: [
       "Sloth and Messenger Coffee prides itself in delivering high-quality specialty coffee without pretense. Our mission is to offer a great coffee experience affordably.",
       'Each origin of green beans is chosen by Sloth and Messenger founder, Josh for its unique flavour profile. The beans are roasted locally on a weekly basis, using precise techniques to unlock the full potential of each batch. This small-batch roasting process ensures that every roast is fresh and tailored to highlight the unique characteristics of the beans.',
+      'This meticulous approach allows us to deliver consistently fresh, high-quality brews, whether at our pop-up, or in the comfort of your home.',
     ],
     badge: 'no rush',
     stats: [
