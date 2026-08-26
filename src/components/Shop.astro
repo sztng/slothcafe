@@ -13,30 +13,42 @@ const { shop } = site;
 
     <div class="products" data-reveal="scroll">
       {
-        products.map((product) => (
-          <article class="product">
-  <a href={`/shop/${product.handle}`} class="product__link">
-    <img
-      src={product.featuredImage.url}
-      alt={product.featuredImage.altText}
-      class="product__img"
-    />
-    <p class="product__type">Single Origin Espresso</p>
-    <h3 class="product__name">{product.title}</h3>
-  </a>
-  {variant && (
-    <p class="product__price">${Math.round(variant.price.amount)}</p>
-  )}
-  {variant?.availableForSale ? (
-    <button type="button" class="product__add" data-add-to-cart data-variant-id={variant.id} data-title={product.title} data-price-amount={variant.price.amount} data-price-currency={variant.price.currencyCode} data-image={product.featuredImage.url}>
-      Add to cart
-    </button>
-  ) : (
-    <span class="product__soldout">Sold out</span>
- 
-</article>
-
-        ))
+        products.map((product) => {
+          const variant = product.variants.nodes[0];
+          return (
+            <article class="product">
+              <a href={`/shop/${product.handle}`} class="product__link">
+                <img
+                  src={product.featuredImage.url}
+                  alt={product.featuredImage.altText}
+                  class="product__img"
+                />
+                <p class="product__type">Single Origin Espresso</p>
+                <h3 class="product__name">{product.title}</h3>
+              </a>
+              {variant && (
+                <p class="product__price">${Math.round(variant.price.amount)}</p>
+              )}
+              {variant?.availableForSale ? (
+                <button
+                  type="button"
+                  class="product__add"
+                  data-add-to-cart
+                  data-variant-id={variant.id}
+                  data-title={product.title}
+                  data-price-amount={variant.price.amount}
+                  data-price-currency={variant.price.currencyCode}
+                  data-image={product.featuredImage.url}
+                >
+                  Add to cart
+                </button>
+              ) : (
+                <span class="product__soldout">Sold out</span>
+              )}
+            </article>
+          );
+        })
+        
       }
     </div>
 
@@ -45,6 +57,23 @@ const { shop } = site;
 
   <Newsletter />
 </section>
+
+<script>
+  import { addToCart } from '../lib/cart.js';
+
+  document.querySelectorAll('[data-add-to-cart]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      addToCart({
+        variantId: btn.dataset.variantId,
+        title: btn.dataset.title,
+        priceAmount: btn.dataset.priceAmount,
+        priceCurrency: btn.dataset.priceCurrency,
+        image: btn.dataset.image,
+        quantity: 1,
+      });
+    });
+  });
+</script>
 
 <style>
   .shop {
@@ -80,6 +109,15 @@ const { shop } = site;
     margin-bottom: 1.25rem;
   }
 
+.product__type {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0 0 0.4rem;
+}
+
   .product__name {
     font-family: var(--font-body);
     font-weight: 700;
@@ -89,11 +127,41 @@ const { shop } = site;
     margin: 0 0 0.5rem;
   }
 
-  .product__notes {
+  .product__price {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: rgba(0, 0, 0, 0.65);
-    margin: 0;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .product__add {
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .product__add:hover {
+    color: var(--teal-deep);
+  }
+
+  .product__soldout {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.4);
   }
 
   .product__link {

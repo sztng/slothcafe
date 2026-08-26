@@ -20,17 +20,41 @@ const products = await getProducts();
 
         <div class="products">
           {
-            products.map((product) => (
-              <article class="product">
-                <img
-                  src={product.featuredImage.url}
-                  alt={product.featuredImage.altText}
-                  class="product__img"
-                />
-                <h3 class="product__name">{product.title}</h3>
-                <p class="product__notes">tasting notes: {product.description}</p>
-              </article>
-            ))
+            products.map((product) => {
+              const variant = product.variants.nodes[0];
+              return (
+                <article class="product">
+                  <img
+                    src={product.featuredImage.url}
+                    alt={product.featuredImage.altText}
+                    class="product__img"
+                  />
+                  <h3 class="product__name">{product.title}</h3>
+                  <p class="product__notes">tasting notes: {product.description}</p>
+                  {variant && (
+                    <p class="product__price">
+                      {variant.price.currencyCode} {variant.price.amount}
+                    </p>
+                  )}
+                  {variant?.availableForSale ? (
+                    <button
+                      type="button"
+                      class="product__add"
+                      data-add-to-cart
+                      data-variant-id={variant.id}
+                      data-title={product.title}
+                      data-price-amount={variant.price.amount}
+                      data-price-currency={variant.price.currencyCode}
+                      data-image={product.featuredImage.url}
+                    >
+                      Add to cart
+                    </button>
+                  ) : (
+                    <span class="product__soldout">Sold out</span>
+                  )}
+                </article>
+              );
+            })
           }
         </div>
       </div>
@@ -38,6 +62,23 @@ const products = await getProducts();
   </main>
   <Footer />
 </Base>
+
+<script>
+  import { addToCart } from '../lib/cart.js';
+
+  document.querySelectorAll('[data-add-to-cart]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      addToCart({
+        variantId: btn.dataset.variantId,
+        title: btn.dataset.title,
+        priceAmount: btn.dataset.priceAmount,
+        priceCurrency: btn.dataset.priceCurrency,
+        image: btn.dataset.image,
+        quantity: 1,
+      });
+    });
+  });
+</script>
 
 <style>
   .shop {
@@ -84,7 +125,44 @@ const products = await getProducts();
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: rgba(0, 0, 0, 0.65);
-    margin: 0;
+    margin: 0 0 0.75rem;
+  }
+
+  .product__price {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .product__add {
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .product__add:hover {
+    color: var(--teal-deep);
+  }
+
+  .product__soldout {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.4);
   }
 
   @media (max-width: 700px) {
