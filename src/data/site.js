@@ -27,8 +27,8 @@ export const site = {
   },
 
   ticker: [
-    'now open at Amoy Street',
-    'specialty coffee',
+    'NOW OPEN AT 115 AMOY STREET',
+    // 'GRAB A CUPPA TO GO',
   ],
 
   story: {

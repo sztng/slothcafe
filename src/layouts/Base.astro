@@ -102,10 +102,39 @@ const { title, description } = Astro.props;
 
         /* ---- Ticker: seamless marquee (content is duplicated in markup) ---- */
         const track = document.querySelector('[data-ticker-track]');
+
+        /* ---- Ticker: responsive marquee ---- */
+        function buildTicker() {
+          if (!(track instanceof HTMLElement)) return;
+
+          const originalItems = Array.from(track.children);
+          const minWidth = window.innerWidth * 2;
+
+          // clear and rebuild, so we don't stack clones endlessly
+          track.innerHTML = '';
+
+          let totalWidth = 0;
+          let copies = 0;
+
+          while (totalWidth < minWidth) {
+            copies += 1;
+
+            originalItems.forEach((item) => {
+              const clone = item.cloneNode(true);
+              track.appendChild(clone);
+            });
+
+            totalWidth = track.scrollWidth;
+          }
+        }
+        buildTicker();
+        window.addEventListener('resize', buildTicker);
+
+        const totalWidth = track.scrollWidth / 2;
         if (track instanceof HTMLElement) {
           gsap.to(track, {
-            xPercent: -50,
-            duration: 30,
+            x: -totalWidth,
+            duration: 24,
             ease: 'none',
             repeat: -1,
           });

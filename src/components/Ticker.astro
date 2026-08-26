@@ -1,16 +1,19 @@
 ---
 import { site } from '../data/site.js';
 // Duplicate the phrase list so the GSAP loop (translate to -50%) is seamless.
-const phrases = [...site.ticker, ...site.ticker];
+const phrases = [...site.ticker, ...site.ticker, ...site.ticker, ...site.ticker, ...site.ticker, ...site.ticker];
 ---
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker__track" data-ticker-track>
     {
       phrases.map((phrase) => (
-        <span class="ticker__item">
-          {phrase} <span class="ticker__star">✦</span>
-        </span>
+        <>
+          <span class="ticker__item">
+            {phrase}
+          </span>
+          <span class="ticker__dot">•</span>
+        </>
       ))
     }
   </div>
@@ -21,7 +24,7 @@ const phrases = [...site.ticker, ...site.ticker];
     background: var(--ink);
     color: #000;
     overflow: hidden;
-    padding-block: 1.1rem;
+    padding-block: 0.75rem;
   }
 
   .ticker__track {
@@ -31,15 +34,18 @@ const phrases = [...site.ticker, ...site.ticker];
   }
 
   .ticker__item {
-    font-family: var(--font-mono);
-    font-size: 0.95rem;
-    letter-spacing: 0.3em;
+    font-family: var(--font-jetbrainsmono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding-inline: 1.5rem;
+    line-height: 1;
+    padding-inline: 0.9rem;
+    align-content: center;
   }
 
-  .ticker__star {
-    margin-left: 3rem;
+  .ticker__dot {
+    margin-left: 0.95rem;
+    margin-right: 0.95rem;
     opacity: 0.7;
   }
 
