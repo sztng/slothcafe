@@ -1,48 +1,92 @@
 ---
 import { site } from '../data/site.js';
 // Duplicate the phrase list so the GSAP loop (translate to -50%) is seamless.
-const phrases = [...site.ticker, ...site.ticker];
+const phrases = [...site.ticker, ...site.ticker, ...site.ticker, ...site.ticker];
 ---
 
-<div class="ticker" aria-hidden="true">
+<!-- <div class="ticker" aria-hidden="true">
   <div class="ticker__track" data-ticker-track>
     {
       phrases.map((phrase) => (
-        <span class="ticker__item">
-          {phrase} <span class="ticker__star">✦</span>
-        </span>
+        <>
+          <span class="ticker__item">
+            {phrase}
+          </span>
+          <span class="ticker__dot">•</span>
+        </>
       ))
     }
+  </div>
+</div> -->
+
+<div class="ticker-container">
+  <div class="ticker-track">
+    <!-- First copy of content -->
+    <div class="ticker-content">
+      {
+        phrases.map((phrase) => (
+            <span class="ticker-item">{phrase}
+            </span>
+        ))
+      }
+    </div>
+    <!-- Identical duplicate copy for a seamless loop -->
+    <div class="ticker-content" aria-hidden="true">
+      {
+        phrases.map((phrase) => (
+            <span class="ticker-item">{phrase}</span>
+        ))
+      }
+    </div>
   </div>
 </div>
 
 <style>
-  .ticker {
+  /* 1. Hide the horizontal scrollbar */ 
+  .ticker-container { 
     background: var(--ink);
     color: #000;
-    overflow: hidden;
-    padding-block: 1.1rem;
+    overflow: hidden; 
+    width: 100%; 
+    /* padding: 10px 0;  */
+    padding-block: 1rem;
   }
 
-  .ticker__track {
-    display: flex;
-    width: max-content;
-    white-space: nowrap;
+  /* 2. Position the two content blocks side-by-side */ 
+  .ticker-track { 
+    display: flex; 
+    width: max-content; 
+    animation: scroll-ticker 15s linear infinite; 
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
   }
-
-  .ticker__item {
-    font-family: var(--font-mono);
-    font-size: 0.95rem;
-    letter-spacing: 0.3em;
+  /* 3. Ensure content behaves as a uniform row */
+  .ticker-content { 
+    display: flex; 
+    gap: 100px; /* adjust this for any text changes */
+    padding-right: 100px; 
+  }
+  .ticker-item { 
+    /* font-family: sans-serif;  */
+    /* font-size: 1.2rem;  */
+    white-space: nowrap; 
+    -webkit-font-smoothing: antialiased;
+    transform: translateZ(0);
+    font-weight: 700;
+    font-family: 'MyCustomFont', monospace; /* primary font, if cannot find load secondary font */
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding-inline: 1.5rem;
+    line-height: 1;
+    padding-inline: 0.9rem;
   }
 
-  .ticker__star {
-    margin-left: 3rem;
-    opacity: 0.7;
+  /* 4. The seamless loop keyframes */ 
+  @keyframes scroll-ticker { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
   }
-
-  /* If motion is reduced, the GSAP loop never starts — the static band
-     still reads fine because the first few phrases are visible. */
 </style>

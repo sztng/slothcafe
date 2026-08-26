@@ -100,16 +100,7 @@ const { title, description } = Astro.props;
           );
         }
 
-        /* ---- Ticker: seamless marquee (content is duplicated in markup) ---- */
-        const track = document.querySelector('[data-ticker-track]');
-        if (track instanceof HTMLElement) {
-          gsap.to(track, {
-            xPercent: -50,
-            duration: 30,
-            ease: 'none',
-            repeat: -1,
-          });
-        }
+        /* ---- Ticker: handled purely by CSS ---- */
 
         /* ---- Story stats: count up when they enter view ---- */
         document.querySelectorAll('[data-count]').forEach((el) => {

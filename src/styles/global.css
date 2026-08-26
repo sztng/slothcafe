@@ -20,6 +20,13 @@
   --section-pad: clamp(4rem, 9vw, 7.5rem);
 }
 
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/fonts/my-custom-font.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* ------------------------------------------------------------------ */
 /* Reset-ish                                                           */
 /* ------------------------------------------------------------------ */
