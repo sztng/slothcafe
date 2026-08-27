@@ -13,7 +13,7 @@ export const site = {
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Shop', href: '/shop' },
-    { label: 'Menu', href: '/menu' },
+    // { label: 'Menu', href: '/menu' },
     { label: 'Contact us', href: '/contactus' },
   ],
   cta: { label: 'Order ahead', href: '#order' },
