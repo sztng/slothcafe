@@ -19,13 +19,37 @@ import { site } from '../data/site.js';
   title={`${site.name} — ${site.tagline}`}
   description="Slow-roasted specialty coffee. We take our time so you can take yours."
 >
-  <Header />
-  <main>
-    <Hero />
-    <Visit />
-    <Ticker />
-    <Story />
-    <Shop />
-  </main>
+  <div class="hero-stage">
+    <Header />
+    <main>
+      <div class="above-fold">
+        <Hero />
+        <Ticker />
+        <Visit />
+      </div>
+      <Story />
+      <Shop />
+    </main>
+  </div>
   <Footer />
 </Base>
+
+<style>
+  .hero-stage {
+    position: relative;
+  }
+
+  /* Hero grows to fill whatever room is left after Visit + Ticker's
+     natural height, so the ticker band lands at the foot of the
+     first viewport on load instead of wherever the image happens
+     to end. */
+  .above-fold {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .above-fold :global(.hero) {
+    flex: 1;
+  }
+</style>

@@ -19,9 +19,8 @@ export const site = {
   cta: { label: 'Order ahead', href: '#order' },
 
   hero: {
-    eyebrow: 'EST. 2024 · SINGAPORE, SG',
-    headline: ['specialty coffee, locally', 'roasted beans, made for'],
-    sub: 'everyday rituals',
+    eyebrow: 'SINGAPORE, SG',
+    headline: ['specialty coffee, locally', 'roasted beans, made for','everyday rituals'],
     primary: { label: 'See the menu', href: '#menu' },
     secondary: { label: 'Our story', href: '#story' },
   },

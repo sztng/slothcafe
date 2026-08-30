@@ -45,27 +45,31 @@ const { title, description } = Astro.props;
         /* ---- Hero: one orchestrated load sequence ---- */
         gsap
           .timeline({ defaults: { ease: 'power3.out' } })
-          .to('[data-reveal="hero-eyebrow"]', { opacity: 1, y: 0, duration: 0.5 })
+          .to('[data-reveal="hero-eyebrow"]', { opacity: 1, y: 0, duration: 0.3 })
           .to(
             '[data-reveal="hero-line"]',
-            { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 },
-            '-=0.2'
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
+            '-=0.15'
           )
-          .to('[data-reveal="hero-sub"]', { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
           .to(
             '[data-reveal="hero-actions"]',
-            { opacity: 1, y: 0, duration: 0.6 },
-            '-=0.4'
+            { opacity: 1, y: 0, duration: 0.35 },
+            '-=0.25'
           )
           .to(
             '[data-reveal="hero-special"]',
-            { opacity: 1, y: 0, duration: 0.7 },
-            '-=0.3'
+            { opacity: 1, y: 0, duration: 0.4 },
+            '-=0.2'
+          )
+          .to(
+            '[data-reveal="visit-item"]',
+            { opacity: 1, y: 0, duration: 0.4, stagger: 0.08 },
+            '-=0.2'
           );
 
         gsap.set(
-          '[data-reveal="hero-eyebrow"], [data-reveal="hero-line"], [data-reveal="hero-sub"], [data-reveal="hero-actions"], [data-reveal="hero-special"]',
-          { y: 28 }
+          '[data-reveal="hero-eyebrow"], [data-reveal="hero-line"], [data-reveal="hero-actions"], [data-reveal="hero-special"], [data-reveal="visit-item"]',
+          { y: 16 }
         );
 
         /* ---- Sections: quiet scroll-in, once ---- */
@@ -96,6 +100,31 @@ const { title, description } = Astro.props;
               ease: 'power3.out',
               stagger: 0.15,
               scrollTrigger: { trigger: '.cards', start: 'top 82%', once: true },
+            }
+          );
+        }
+
+        /* ---- Shop banner title: fades in on load (it's above the
+           fold, so a scroll trigger would fire inconsistently) ---- */
+        gsap.fromTo(
+          '[data-reveal="shop-banner-title"]',
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 0.15 }
+        );
+
+        /* ---- Product cards: staggered reveal on scroll ---- */
+        const productCards = document.querySelectorAll('[data-reveal="product-cards"]');
+        if (productCards.length) {
+          gsap.fromTo(
+            productCards,
+            { opacity: 0, y: 32 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              ease: 'power3.out',
+              stagger: 0.12,
+              scrollTrigger: { trigger: '.products', start: 'top 85%', once: true },
             }
           );
         }

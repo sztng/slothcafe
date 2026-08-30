@@ -22,27 +22,7 @@ function splitStat(value) {
     </h2>
     {story.paragraphs.map((text) => <p class="story__para">{text}</p>)}
 
-    <hr class="story__rule" />
-
-    <dl class="stats">
-      {
-        story.stats.map((stat) => {
-          const parsed = splitStat(stat.value);
-          return (
-            <div class="stats__item">
-              <dt class="stats__label">{stat.label}</dt>
-              <dd
-                class="stats__value"
-                data-count={parsed?.n}
-                data-count-suffix={parsed?.suffix}
-              >
-                {stat.value}
-              </dd>
-            </div>
-          );
-        })
-      }
-    </dl>
+    
   </div>
 </section>
 
