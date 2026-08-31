@@ -35,7 +35,7 @@ const products = await getProducts();
                     class="product__img"
                   />
                   <h3 class="product__name">{product.title}</h3>
-                  <p class="product__notes">tasting notes: {product.description}</p>
+                  <div class="product__notes" set:html={product.descriptionHtml} />
                   {variant && (
                     <p class="product__price">
                       {variant.price.currencyCode} {variant.price.amount}
@@ -158,6 +158,10 @@ const products = await getProducts();
     font-size: 0.85rem;
     color: rgba(0, 0, 0, 0.65);
     margin: 0 0 0.75rem;
+  }
+
+  .product__notes :global(p) {
+    margin: 0;
   }
 
   .product__price {

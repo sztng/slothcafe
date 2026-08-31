@@ -104,7 +104,7 @@ export async function getProducts(first = 12) {
             id
             handle
             title
-            description
+            descriptionHtml
             featuredImage { url altText }
             variants(first: 5) {
               nodes {
@@ -134,7 +134,7 @@ export async function getProduct(handle) {
           id
           handle
           title
-          description
+          descriptionHtml
           featuredImage { url altText }
           variants(first: 5) {
             nodes {
