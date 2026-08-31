@@ -9,7 +9,7 @@ import '@fontsource/poppins/700.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../styles/global.css';
-import { SHOPIFY_DOMAIN } from '../lib/shopify.js';
+import { SHOPIFY_DOMAIN, STOREFRONT_TOKEN } from '../lib/shopify.js';
 
 const { title, description } = Astro.props;
 ---
@@ -28,7 +28,7 @@ const { title, description } = Astro.props;
       document.documentElement.classList.add('js');
     </script>
   </head>
-  <body data-shopify-domain={SHOPIFY_DOMAIN}>
+  <body data-shopify-domain={SHOPIFY_DOMAIN} data-shopify-token={STOREFRONT_TOKEN}>
     <slot />
 
     <script>

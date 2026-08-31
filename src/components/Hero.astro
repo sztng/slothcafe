@@ -62,6 +62,14 @@ const { hero } = site;
     }
   }
 
+  /* On phones the fixed 3.5rem floor made the headline dominate the
+     whole screen with only a couple of words visible per fold. */
+  @media (max-width: 640px) {
+    .hero__title {
+      font-size: clamp(2rem, 11vw, 3.25rem);
+    }
+  }
+
   .hero__actions {
     display: flex;
     gap: 1rem;

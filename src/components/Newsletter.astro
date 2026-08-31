@@ -10,18 +10,61 @@ const { newsletter } = site;
       <p class="newsletter__sub">{newsletter.sub}</p>
     </div>
 
-    <form class="newsletter__form" onsubmit="event.preventDefault()">
+    <form class="newsletter__form" data-newsletter-form>
       <input
         type="email"
         required
         placeholder={newsletter.placeholder}
         aria-label={newsletter.placeholder}
         class="newsletter__input"
+        data-newsletter-input
       />
-      <button type="submit" class="newsletter__btn">{newsletter.cta}</button>
+      <button type="submit" class="newsletter__btn" data-newsletter-btn>{newsletter.cta}</button>
+      <p class="newsletter__status" data-newsletter-status role="status" aria-live="polite" hidden></p>
     </form>
   </div>
 </div>
+
+<script>
+  import { subscribeToNewsletter } from '../lib/newsletter.js';
+
+  const form = document.querySelector('[data-newsletter-form]');
+  const input = form.querySelector('[data-newsletter-input]');
+  const button = form.querySelector('[data-newsletter-btn]');
+  const status = form.querySelector('[data-newsletter-status]');
+  const domain = document.body.dataset.shopifyDomain;
+  const token = document.body.dataset.shopifyToken;
+
+  function setStatus(message, state) {
+    status.textContent = message;
+    status.dataset.state = state;
+    status.hidden = false;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = input.value.trim();
+    if (!email) return;
+
+    button.disabled = true;
+    const originalLabel = button.textContent;
+    button.textContent = 'Subscribing…';
+
+    try {
+      const { alreadySubscribed } = await subscribeToNewsletter({ domain, token, email });
+      setStatus(
+        alreadySubscribed ? "You're already on the list!" : 'Subscribed — welcome!',
+        'success'
+      );
+      input.value = '';
+    } catch {
+      setStatus('Something went wrong — please try again.', 'error');
+    } finally {
+      button.disabled = false;
+      button.textContent = originalLabel;
+    }
+  });
+</script>
 
 <style>
   .newsletter {
@@ -93,6 +136,25 @@ const { newsletter } = site;
   .newsletter__btn:hover {
     background: var(--teal);
     color: var(--white);
+  }
+
+  .newsletter__btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .newsletter__status {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    margin: 0;
+  }
+
+  .newsletter__status[data-state='success'] {
+    color: var(--teal-deep);
+  }
+
+  .newsletter__status[data-state='error'] {
+    color: #b3261e;
   }
 
   @media (max-width: 700px) {

@@ -18,7 +18,7 @@
 const USE_MOCKS = false;
 
 export const SHOPIFY_DOMAIN = import.meta.env.SHOPIFY_DOMAIN ?? 'your-store.myshopify.com';
-const STOREFRONT_TOKEN = import.meta.env.SHOPIFY_STOREFRONT_TOKEN ?? '';
+export const STOREFRONT_TOKEN = import.meta.env.SHOPIFY_STOREFRONT_TOKEN ?? '';
 const API_VERSION = '2025-04';
 
 /* ------------------------------------------------------------------ */
