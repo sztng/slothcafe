@@ -69,6 +69,7 @@ const { newsletter } = site;
 <style>
   .newsletter {
     margin-top: var(--section-pad);
+    padding-bottom: var(--section-pad);
   }
 
   .newsletter__inner {
@@ -82,7 +83,6 @@ const { newsletter } = site;
   .newsletter__title {
     font-family: var(--font-body);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.03em;
     font-size: 1.3rem;
     margin: 0 0 0.75rem;
@@ -105,11 +105,10 @@ const { newsletter } = site;
 
   .newsletter__input {
     font-family: var(--font-mono);
-    text-transform: uppercase;
     font-size: 0.85rem;
     padding: 0.9em 1.1em;
     border: 1px solid rgba(20, 51, 45, 0.15);
-    border-radius: 8px;
+    border-radius: 0;
     background: var(--white);
     color: #000;
   }
@@ -120,7 +119,6 @@ const { newsletter } = site;
 
   .newsletter__btn {
     font-family: var(--font-mono);
-    text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 700;
     font-size: 0.85rem;

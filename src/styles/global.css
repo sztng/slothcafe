@@ -80,7 +80,6 @@ h3 {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.35em;
-  text-transform: uppercase;
   color: #000;
   margin: 0 0 1rem;
 }

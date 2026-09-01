@@ -20,13 +20,13 @@ import { site } from '../data/site.js';
   description="Slow-roasted specialty coffee. We take our time so you can take yours."
 >
   <div class="hero-stage">
-    <Header />
+    <div class="above-fold">
+      <Header />
+      <Hero />
+      <Ticker />
+    </div>
     <main>
-      <div class="above-fold">
-        <Hero />
-        <Ticker />
-        <Visit />
-      </div>
+      <Visit />
       <Story />
       <Shop />
     </main>
@@ -39,7 +39,7 @@ import { site } from '../data/site.js';
     position: relative;
   }
 
-  /* Hero grows to fill whatever room is left after Visit + Ticker's
+  /* Hero grows to fill whatever room is left after the Header + Ticker's
      natural height, so the ticker band lands at the foot of the
      first viewport on load instead of wherever the image happens
      to end. */

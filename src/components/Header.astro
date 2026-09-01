@@ -43,7 +43,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
         </button>
 
         <div class="cart__panel" data-cart-panel hidden>
-          <p class="cart__empty" data-cart-empty>Your cart is empty</p>
+          <p class="cart__empty" data-cart-empty>Your Cart is Empty</p>
           <ul class="cart__items" data-cart-items></ul>
           <div class="cart__footer" data-cart-footer hidden>
             <div class="cart__subtotal">
@@ -260,7 +260,6 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   .nav a {
     font-family: var(--font-body);
     font-weight: 500;
-    text-transform: lowercase;
     letter-spacing: 0.02em;
     color: #000;
     text-decoration: none;
@@ -377,7 +376,6 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     color: var(--white);
     font-family: var(--font-mono);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.8rem;
     padding: 0.75rem;

@@ -40,10 +40,10 @@ const { shop } = site;
                   data-price-currency={variant.price.currencyCode}
                   data-image={product.featuredImage.url}
                 >
-                  Add to cart
+                  Add to Cart
                 </button>
               ) : (
-                <span class="product__soldout">Sold out</span>
+                <span class="product__soldout">Sold Out</span>
               )}
             </article>
           );
@@ -78,13 +78,11 @@ const { shop } = site;
 <style>
   .shop {
     padding-top: 3rem;
-    padding-bottom: var(--section-pad);
   }
 
   .shop__title {
     font-family: var(--font-body);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.04em;
     text-align: center;
     font-size: clamp(1.5rem, 3vw, 2rem);
@@ -111,7 +109,6 @@ const { shop } = site;
 
 .product__type {
   font-family: var(--font-mono);
-  text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.75rem;
   color: rgba(0, 0, 0, 0.5);
@@ -121,7 +118,6 @@ const { shop } = site;
   .product__name {
     font-family: var(--font-body);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.03em;
     font-size: 1.05rem;
     margin: 0 0 0.5rem;
@@ -142,7 +138,6 @@ const { shop } = site;
     cursor: pointer;
     font-family: var(--font-mono);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 0.8rem;
     color: #000;
@@ -158,7 +153,6 @@ const { shop } = site;
     display: inline-block;
     font-family: var(--font-mono);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 0.8rem;
     color: rgba(0, 0, 0, 0.4);
@@ -175,7 +169,6 @@ const { shop } = site;
     text-align: center;
     font-family: var(--font-mono);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.15em;
     font-size: 0.85rem;
     color: #000;

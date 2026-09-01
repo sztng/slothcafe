@@ -9,16 +9,17 @@ const products = await getProducts();
 ---
 
 <Base
-  title={`Shop — ${site.name}`}
+  title="Shop"
   description="All our specialty coffee, roasted weekly."
 >
   <Header />
   <main>
-    <section class="shop-banner">
-      <img src="/images/coffeeBeans.jpg" alt="" class="shop-banner__img" />
-      <h1 class="shop-banner__title" data-reveal="shop-banner-title">
-        Our beans, right to your doorstep
-      </h1>
+    <section class="shop-header">
+      <div class="container">
+        <h1 class="shop-header__title" data-reveal="shop-banner-title">
+          Our Beans, Right to your Doorstep
+        </h1>
+      </div>
     </section>
 
     <section class="shop">
@@ -52,10 +53,10 @@ const products = await getProducts();
                       data-price-currency={variant.price.currencyCode}
                       data-image={product.featuredImage.url}
                     >
-                      Add to cart
+                      Add to Cart
                     </button>
                   ) : (
-                    <span class="product__soldout">Sold out</span>
+                    <span class="product__soldout">Sold Out</span>
                   )}
                 </article>
               );
@@ -86,45 +87,20 @@ const products = await getProducts();
 </script>
 
 <style>
-  .shop-banner {
-    position: relative;
-    overflow: hidden;
+  .shop-header {
+    padding-block: 3rem 0.5rem;
+    text-align: center;
   }
 
-  .shop-banner__img {
-    display: block;
-    width: 100%;
-    height: clamp(400px, 42vw, 560px);
-    object-fit: cover;
-    object-position: center 40%;
-  }
-
-  .shop-banner::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 65%);
-    pointer-events: none;
-  }
-
-  .shop-banner__title {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
+  .shop-header__title {
     margin: 0;
-    padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
-    color: var(--white);
     font-family: var(--font-body);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
     font-size: clamp(1.25rem, 3vw, 2rem);
   }
 
   .shop {
-    padding-block: 3rem var(--section-pad);
+    padding-block: 2rem var(--section-pad);
   }
 
   .products {
@@ -138,7 +114,8 @@ const products = await getProducts();
   }
 
   .product__img {
-    width: 100%;
+    width: 65%;
+    margin-inline: auto;
     aspect-ratio: 3 / 4;
     object-fit: contain;
     margin-bottom: 1.25rem;
@@ -147,7 +124,6 @@ const products = await getProducts();
   .product__name {
     font-family: var(--font-body);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.03em;
     font-size: 1.05rem;
     margin: 0 0 0.5rem;
@@ -179,7 +155,6 @@ const products = await getProducts();
     cursor: pointer;
     font-family: var(--font-mono);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 0.8rem;
     color: #000;
@@ -195,7 +170,6 @@ const products = await getProducts();
     display: inline-block;
     font-family: var(--font-mono);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 0.8rem;
     color: rgba(0, 0, 0, 0.4);

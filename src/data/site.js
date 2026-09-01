@@ -13,26 +13,24 @@ export const site = {
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Shop', href: '/shop' },
-    // { label: 'Menu', href: '/menu' },
-    { label: 'Contact us', href: '/contactus' },
+    { label: 'Contact Us', href: '/contactus' },
   ],
-  cta: { label: 'Order ahead', href: '#order' },
+  cta: { label: 'Order Ahead', href: '#order' },
 
   hero: {
-    eyebrow: 'SINGAPORE, SG',
+    eyebrow: 'Singapore, SG',
     headline: ['specialty coffee, locally', 'roasted beans, made for','everyday rituals'],
-    primary: { label: 'See the menu', href: '#menu' },
-    secondary: { label: 'Our story', href: '#story' },
+    primary: { label: 'Our story', href: '#story' },
   },
 
   ticker: [
-    'NOW OPEN AT 115 AMOY STREET',
+    'Now Open at 115 Amoy Street',
     // 'GRAB A CUPPA TO GO',
   ],
 
   story: {
-    eyebrow: 'OUR STORY',
-    headline: ['intentional, specialty coffee, roasted locally'],
+    eyebrow: 'Our Story',
+    headline: ['Intentional, Specialty Coffee, Roasted Locally'],
     paragraphs: [
       "Sloth and Messenger Coffee prides itself in delivering high-quality specialty coffee without pretense. Our mission is to offer a great coffee experience affordably.",
       'Each origin of green beans is chosen by Sloth and Messenger founder, Josh for its unique flavour profile. The beans are roasted locally on a weekly basis, using precise techniques to unlock the full potential of each batch. This small-batch roasting process ensures that every roast is fresh and tailored to highlight the unique characteristics of the beans.',
@@ -47,15 +45,15 @@ export const site = {
   },
 
   shop: {
-    headline: "What we're serving",
-    shopAllLabel: 'Shop all coffee',
+    headline: "What We're Serving",
+    shopAllLabel: 'Shop All Coffee',
     shopAllHref: '/shop',
   },
 
   newsletter: {
-    headline: 'Subscribe to the sloth mail',
+    headline: 'Subscribe to the Sloth Mail',
     sub: 'Get first access to new bean drops, fresh roasts, brewing tips, and shop updates.',
-    placeholder: 'Enter email',
+    placeholder: 'Enter Email',
     cta: 'Subscribe',
   },
 
