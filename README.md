@@ -8,10 +8,17 @@ with a mock Shopify data layer ready to swap for the real Storefront API.
 
 ## Tech stack
 
-- [Astro](https://astro.build) — static site generation
-- [GSAP](https://gsap.com) — scroll reveals, hero timeline, ticker, stat count-up
-- Vanilla CSS (no framework) with design tokens in `src/styles/global.css`
-- Shopify Storefront API (mocked locally, see below)
+**Frontend**
+
+![Astro](https://img.shields.io/badge/Astro-5.7-BC52EE?style=flat-square&logo=astro&logoColor=white)
+![GSAP](https://img.shields.io/badge/GSAP-3.12-88CE02?style=flat-square&logo=greensock&logoColor=white)
+![Font Awesome](https://img.shields.io/badge/Font_Awesome-7.3-528DD7?style=flat-square&logo=fontawesome&logoColor=white)
+![Fontsource](https://img.shields.io/badge/Fontsource-self--hosted_fonts-0A0A0A?style=flat-square&logo=googlefonts&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS-vanilla-1572B6?style=flat-square&logo=css3&logoColor=white)
+
+**Commerce**
+
+![Shopify](https://img.shields.io/badge/Shopify_Storefront_API-mocked_locally-7AB55C?style=flat-square&logo=shopify&logoColor=white)
 
 ## Run it
 
