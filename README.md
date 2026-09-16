@@ -1,7 +1,17 @@
 # Sloth & Messenger — cafe site
 
-Astro + GSAP landing page, with a mock Shopify data layer ready to swap
-for the real Storefront API.
+A landing page for Sloth & Messenger, a coffee shop. Built with
+[Astro](https://astro.build) and animated with [GSAP](https://gsap.com),
+with a mock Shopify data layer ready to swap for the real Storefront API.
+
+🔗 **Live site:** _coming soon_
+
+## Tech stack
+
+- [Astro](https://astro.build) — static site generation
+- [GSAP](https://gsap.com) — scroll reveals, hero timeline, ticker, stat count-up
+- Vanilla CSS (no framework) with design tokens in `src/styles/global.css`
+- Shopify Storefront API (mocked locally, see below)
 
 ## Run it
 
@@ -19,7 +29,7 @@ npm run build      # static output in dist/
 | Colors, fonts, spacing tokens | `src/styles/global.css` |
 | GSAP animations (hero, scroll reveals, ticker, stat count-up) | `src/layouts/Base.astro` |
 | Shopify data layer (mocks now, real API later) | `src/lib/shopify.js` |
-| Placeholder logo | `src/components/Logo.astro` |
+| Logo | `src/components/Header.astro` (`public/images/logoSmallText.png`) |
 | Photos to add | `public/images/README.md` |
 
 ## Swapping in the real content
@@ -29,7 +39,8 @@ npm run build      # static output in dist/
 2. **Photos** — drop images into `public/images/` (names listed in the
    README there), then uncomment the `url(...)` background lines flagged
    with comments in `Hero.astro`, `Story.astro`, and `Visit.astro`.
-3. **Logo** — replace the SVG in `src/components/Logo.astro`.
+3. **Logo** — swap `public/images/logoSmallText.png` (and `logoBigText.png`)
+   for the real thing, referenced in `src/components/Header.astro`.
 
 ## Connecting Shopify (when you get access)
 
