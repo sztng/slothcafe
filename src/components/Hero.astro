@@ -44,30 +44,15 @@ const { hero } = site;
   }
 
   .hero__title {
-    font-size: clamp(3.5rem, 6.5vw, 9rem);
+    font-size: clamp(2.5rem, 5.5vw, 7rem);
     font-weight: 600;
-    line-height: 0.95;
+    line-height: 1;
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
 
   .hero__line {
     display: block;
-  }
-
-  /* Below this, natural wrapping keeps the line readable instead of
-     clipping mid-word; above it, the line stays intact and can bleed
-     toward the hero's edges the way the reference design does. */
-  @media (min-width: 768px) {
-    .hero__line {
-      white-space: nowrap;
-    }
-  }
-
-  /* On phones the fixed 3.5rem floor made the headline dominate the
-     whole screen with only a couple of words visible per fold. */
-  @media (max-width: 640px) {
-    .hero__title {
-      font-size: clamp(2rem, 11vw, 3.25rem);
-    }
   }
 
   .hero__actions {
@@ -75,5 +60,4 @@ const { hero } = site;
     gap: 1rem;
     flex-wrap: wrap;
   }
-
 </style>
