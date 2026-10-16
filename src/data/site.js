@@ -19,7 +19,7 @@ export const site = {
 
   hero: {
     eyebrow: 'Singapore, SG',
-    headline: ['Specialty coffee made from locally roasted beans for daily rituals.'],
+    headline: ['Locally roasted for daily rituals.'],
     primary: { label: 'Our story', href: '#story' },
   },
 
