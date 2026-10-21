@@ -15,10 +15,10 @@
  *   3. Set the values below (or via env vars) and set USE_MOCKS = false.
  */
 
-const USE_MOCKS = true;
+const USE_MOCKS = false;
 
-const SHOPIFY_DOMAIN = import.meta.env.SHOPIFY_DOMAIN ?? 'your-store.myshopify.com';
-const STOREFRONT_TOKEN = import.meta.env.SHOPIFY_STOREFRONT_TOKEN ?? '';
+export const SHOPIFY_DOMAIN = import.meta.env.SHOPIFY_DOMAIN ?? 'your-store.myshopify.com';
+export const STOREFRONT_TOKEN = import.meta.env.SHOPIFY_STOREFRONT_TOKEN ?? '';
 const API_VERSION = '2025-04';
 
 /* ------------------------------------------------------------------ */
@@ -104,7 +104,7 @@ export async function getProducts(first = 12) {
             id
             handle
             title
-            description
+            descriptionHtml
             featuredImage { url altText }
             variants(first: 5) {
               nodes {
@@ -134,7 +134,7 @@ export async function getProduct(handle) {
           id
           handle
           title
-          description
+          descriptionHtml
           featuredImage { url altText }
           variants(first: 5) {
             nodes {

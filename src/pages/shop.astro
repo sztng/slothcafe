@@ -9,28 +9,58 @@ const products = await getProducts();
 ---
 
 <Base
-  title={`Shop — ${site.name}`}
+  title="Shop"
   description="All our specialty coffee, roasted weekly."
 >
   <Header />
   <main>
+    <section class="shop-header">
+      <div class="container">
+        <h1 class="shop-header__title" data-reveal="shop-banner-title">
+          Our Beans, Right to your Doorstep
+        </h1>
+      </div>
+    </section>
+
     <section class="shop">
       <div class="container">
-        <h1 class="shop__title">OUR BEANS, RIGHT TO YOUR DOORSTEP</h1>
-
         <div class="products">
           {
-            products.map((product) => (
-              <article class="product">
-                <img
-                  src={product.featuredImage.url}
-                  alt={product.featuredImage.altText}
-                  class="product__img"
-                />
-                <h3 class="product__name">{product.title}</h3>
-                <p class="product__notes">tasting notes: {product.description}</p>
-              </article>
-            ))
+            products.map((product) => {
+              const variant = product.variants.nodes[0];
+              return (
+                <article class="product" data-reveal="product-cards">
+                  <img
+                    src={product.featuredImage.url}
+                    alt={product.featuredImage.altText}
+                    class="product__img"
+                  />
+                  <h3 class="product__name">{product.title}</h3>
+                  <div class="product__notes" set:html={product.descriptionHtml} />
+                  {variant && (
+                    <p class="product__price">
+                      {variant.price.currencyCode} {variant.price.amount}
+                    </p>
+                  )}
+                  {variant?.availableForSale ? (
+                    <button
+                      type="button"
+                      class="product__add"
+                      data-add-to-cart
+                      data-variant-id={variant.id}
+                      data-title={product.title}
+                      data-price-amount={variant.price.amount}
+                      data-price-currency={variant.price.currencyCode}
+                      data-image={product.featuredImage.url}
+                    >
+                      Add to Cart
+                    </button>
+                  ) : (
+                    <span class="product__soldout">Sold Out</span>
+                  )}
+                </article>
+              );
+            })
           }
         </div>
       </div>
@@ -39,19 +69,38 @@ const products = await getProducts();
   <Footer />
 </Base>
 
+<script>
+  import { addToCart } from '../lib/cart.js';
+
+  document.querySelectorAll('[data-add-to-cart]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      addToCart({
+        variantId: btn.dataset.variantId,
+        title: btn.dataset.title,
+        priceAmount: btn.dataset.priceAmount,
+        priceCurrency: btn.dataset.priceCurrency,
+        image: btn.dataset.image,
+        quantity: 1,
+      });
+    });
+  });
+</script>
+
 <style>
-  .shop {
-    padding-block: 3rem var(--section-pad);
+  .shop-header {
+    padding-block: 3rem 0.5rem;
+    text-align: center;
   }
 
-  .shop__title {
+  .shop-header__title {
+    margin: 0;
     font-family: var(--font-body);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    text-align: center;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    margin: 0 0 3rem;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .shop {
+    padding-block: 2rem var(--section-pad);
   }
 
   .products {
@@ -65,7 +114,8 @@ const products = await getProducts();
   }
 
   .product__img {
-    width: 100%;
+    width: 65%;
+    margin-inline: auto;
     aspect-ratio: 3 / 4;
     object-fit: contain;
     margin-bottom: 1.25rem;
@@ -74,7 +124,6 @@ const products = await getProducts();
   .product__name {
     font-family: var(--font-body);
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.03em;
     font-size: 1.05rem;
     margin: 0 0 0.5rem;
@@ -84,7 +133,46 @@ const products = await getProducts();
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: rgba(0, 0, 0, 0.65);
+    margin: 0 0 0.75rem;
+  }
+
+  .product__notes :global(p) {
     margin: 0;
+  }
+
+  .product__price {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .product__add {
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .product__add:hover {
+    color: var(--teal-deep);
+  }
+
+  .product__soldout {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.4);
   }
 
   @media (max-width: 700px) {

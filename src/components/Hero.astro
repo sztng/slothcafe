@@ -4,16 +4,16 @@ const { hero } = site;
 ---
 
 <section class="hero">
-  <div class="container hero__inner">
+  <div class="hero__inner">
     <div class="hero__copy">
       <p class="hero__eyebrow" data-reveal="hero-eyebrow">{hero.eyebrow}</p>
       <h1 class="hero__title">
-        <span class="hero__line" data-reveal="hero-line">{hero.headline[0]}</span>
-        <span class="hero__line hero__line--italic" data-reveal="hero-line"
-          >{hero.headline[1]}</span
-        >
+        {hero.headline.map((line) => (
+          <span class="hero__line" data-reveal="hero-line">
+            {line}
+          </span>
+        ))}
       </h1>
-      <p class="hero__sub" data-reveal="hero-sub">{hero.sub}</p>
     </div>
   </div>
 </section>
@@ -22,40 +22,37 @@ const { hero } = site;
   .hero {
     position: relative;
     color: #ffffff;
-    background: url('/images/coffee.png');
+    background: url('/images/storefront.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center 45%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .hero__inner {
-    padding-block: clamp(5rem, 12vw, 9rem) clamp(4rem, 9vw, 7rem);
+    padding-block: 0 clamp(3rem, 8vw, 6rem);
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
   }
 
   .hero__eyebrow {
     font-family: var(--font-mono);
     font-size: 0.85rem;
     letter-spacing: 0.35em;
-    margin: 0 0 2rem;
+    margin: 0 0 1rem;
   }
 
   .hero__title {
-    font-size: clamp(3rem, 7.5vw, 5.5rem);
-    font-weight: 700;
+    font-size: clamp(2.5rem, 5.5vw, 7rem);
+    font-weight: 600;
+    line-height: 1;
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
 
   .hero__line {
     display: block;
-  }
-
-  .hero__line--italic {
-    font-style: italic;
-    font-weight: 500;
-  }
-
-  .hero__sub {
-    max-width: 34ch;
-    font-size: 1.15rem;
-    margin: 1.75rem 0 2.25rem;
   }
 
   .hero__actions {
@@ -63,5 +60,4 @@ const { hero } = site;
     gap: 1rem;
     flex-wrap: wrap;
   }
-
 </style>
